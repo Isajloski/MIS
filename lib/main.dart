@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+// main
 void main() {
   runApp(const MyApp());
 }
@@ -51,6 +51,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  // Метода која ја користам при бришење на предмет
+  void _deleteClass(index) {
+    setState(() {
+      classes.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +73,13 @@ class _MyHomePageState extends State<MyHomePage> {
             // Ги прикажувам сите курсеви кои се во листата
             return ListTile(
               title: Text(classes[index]),
+                // Копче за бришење на предмет!
+                trailing: IconButton(
+                icon: const Icon(Icons.delete),
+                onPressed: () {
+                  _deleteClass(index);
+                },
+              )
             );
           },
         ),
